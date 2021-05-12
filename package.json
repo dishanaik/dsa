@@ -1,0 +1,22 @@
+{
+  "name": "dsa",
+  "version": "0.1.0",
+  "description": "Data Structures & Algorithms",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha 'test/**/*.test.js' --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dishanaik/dsa.git"
+  },
+  "author": "Disha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dishanaik/dsa/issues"
+  },
+  "homepage": "https://github.com/dishanaik/dsa#readme",
+  "devDependencies": {
+    "mocha": "^8.4.0"
+  }
+}
