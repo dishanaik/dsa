@@ -2,47 +2,43 @@ const Node = require('./node')
 
 class LinkedList {
   constructor() {
-    this.head = null;
-    this.tail = null;
+    this.head = null
+    this.tail = null
   }
 
   isEmpty() {
-    return this.head==null
+    return this.head == null
   }
 
   insertAtTheBegining(val) {
+    var newNode = new Node(val)
     if(this.isEmpty()) {
-      this.head = new Node(val)
-      this.tail = this.head
+      this.tail = newNode
     } else {
-      var newNode = new Node(val)
       newNode.next = this.head
-      this.head = newNode
     }
+    this.head = newNode
   }
 
   insertAtTheEnd(val) {
+    var newNode = new Node(val)
     if(this.isEmpty()) {
-      this.head = new Node(val)
-      this.tail = this.head
+      this.head = newNode
     } else {
-      var newNode = new Node(val)
       this.tail.next = newNode
-      this.tail = newNode
     }
+    this.tail = newNode
   }
 
   insertAfter(node, val) {
     if(this.isEmpty()) return
+    var newNode = new Node(val)
     if(node == this.tail) {
-      var newNode = new Node(val)
-      node.next = newNode
       this.tail = newNode
     } else {
-      var newNode = new Node(val)
       newNode.next = node.next
-      node.next = newNode
     }
+    node.next = newNode
   }
 }
 
