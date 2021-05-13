@@ -4,7 +4,8 @@
   "description": "Data Structures & Algorithms",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha 'test/**/*.test.js' --recursive"
+    "test": "mocha 'test/**/*.test.js' --recursive",
+    "coverage": "nyc --reporter=html mocha 'test/**/*.test.js' --recursive"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/dishanaik/dsa#readme",
   "devDependencies": {
-    "mocha": "^8.4.0"
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0"
   }
 }

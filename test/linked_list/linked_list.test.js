@@ -89,7 +89,7 @@ describe('LinkedList', function() {
         assert.strictEqual(ll.head.next.next.next.data, 10)
       })
 
-      it('should insert the value when insrting after tail', function() {
+      it('should insert the value when inserting after tail', function() {
         ll.insertAfter(ll.tail, 40)
         assert.strictEqual(ll.tail.data, 40)
         assert.strictEqual(ll.tail.next, undefined)
