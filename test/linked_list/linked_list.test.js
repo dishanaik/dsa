@@ -96,7 +96,7 @@ describe('LinkedList', function() {
       })
     })
   })
-  describe('#length', function() {
+  describe('#lengthIterative', function() {
     describe('when empty', function() {
       it('should return 0', function() {
         assert.strictEqual(LinkedList.lengthIterative(ll), 0)
@@ -111,6 +111,25 @@ describe('LinkedList', function() {
       })
       it('should return no. of nodes', function() {
         assert.strictEqual( LinkedList.lengthIterative(ll), 4)
+      })
+    })
+  })
+
+  describe('#lengthRecursive', function() {
+    describe('when empty', function() {
+      it('should return 0', function() {
+        assert.strictEqual(LinkedList.lengthRecursive(ll), 0)
+      })
+    })
+    describe('when not empty', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(10)
+        ll.insertAtTheBegining(20)
+        ll.insertAtTheBegining(30)
+        ll.insertAtTheBegining(40)
+      })
+      it('should return no. of nodes', function() {
+        assert.strictEqual( LinkedList.lengthRecursive(ll), 4)
       })
     })
   })

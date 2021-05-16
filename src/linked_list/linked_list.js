@@ -1,5 +1,15 @@
 const Node = require('./node')
 
+function lengthRecursiveNode(node) {
+  if(node == null) {
+    console.log("_____________________________________________",node)
+    return 0
+  } else {
+    return 1 + lengthRecursiveNode(node.next)
+  }
+}
+
+
 class LinkedList {
   constructor() {
     this.head = null
@@ -31,17 +41,23 @@ class LinkedList {
   }
 
   static lengthIterative(ll) {
+    var current = ll.head
     var length = 0
-    if(ll.head == null) {
-      return length
+    while(current) {
+      length += 1
+      current = current.next
+    }
+    return length
+  }
+ 
+  static lengthRecursive(ll) {
+    if(ll == null) {
+      return 0
     } else {
-      var current = ll.head
-      while(current.next != null) {
-        length+=1
-      }
-      return length
+      return lengthRecursiveNode(ll.head)
     }
   }
+
 
   insertAfter(node, val) {
     if(this.isEmpty()) return
