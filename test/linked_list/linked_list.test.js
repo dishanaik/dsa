@@ -96,4 +96,22 @@ describe('LinkedList', function() {
       })
     })
   })
+  describe('#length', function() {
+    describe('when empty', function() {
+      it('should return 0', function() {
+        assert.strictEqual(LinkedList.lengthIterative(ll), 0)
+      })
+    })
+    describe('when not empty', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(10)
+        ll.insertAtTheBegining(20)
+        ll.insertAtTheBegining(30)
+        ll.insertAtTheBegining(40)
+      })
+      it('should return no. of nodes', function() {
+        assert.strictEqual( LinkedList.lengthIterative(ll), 4)
+      })
+    })
+  })
 })

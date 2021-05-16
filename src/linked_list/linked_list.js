@@ -30,6 +30,19 @@ class LinkedList {
     this.tail = newNode
   }
 
+  static lengthIterative(ll) {
+    var length = 0
+    if(ll.head == null) {
+      return length
+    } else {
+      var current = ll.head
+      while(current.next != null) {
+        length+=1
+      }
+      return length
+    }
+  }
+
   insertAfter(node, val) {
     if(this.isEmpty()) return
     var newNode = new Node(val)
