@@ -2,28 +2,28 @@ class Tree {
   constructor(root) {
     this.root = root
   }
-
-  static pre_order(node, array = []) {
+  
+  static preOrder(node, array = []) {
     if(node == null) return array
     array.push(node.data)
-    Tree.pre_order(node.left, array)
-    Tree.pre_order(node.right, array)
+    Tree.preOrder(node.left, array)
+    Tree.preOrder(node.right, array)
     return array
   }
 
-  static post_order(node, array = []) { 
+  static postOrder(node, array = []) { 
     if(node == null) return array
-    Tree.post_order(node.left, array) 
-    Tree.post_order(node.right, array) 
+    Tree.postOrder(node.left, array) 
+    Tree.postOrder(node.right, array) 
     array.push(node.data)
     return array
   }  
 
-  static in_order(node, array = []) {
+  static inOrder(node, array = []) {
     if(node == null) return array
-    Tree.in_order(node.left, array)
+    Tree.inOrder(node.left, array)
     array.push(node.data)
-    Tree.in_order(node.right, array)
+    Tree.inOrder(node.right, array)
     return array
   }
 }
