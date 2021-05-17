@@ -1,13 +1,5 @@
 const Node = require('./node')
-
-function lengthRecursiveNode(node) {
-  if(node == null) {
-    return 0
-  } else {
-    return 1 + lengthRecursiveNode(node.next)
-  }
-}
-
+const {lengthRecursiveNode} = require('./utils')
 
 class LinkedList {
   constructor() {
@@ -21,62 +13,61 @@ class LinkedList {
 
   insertAtTheBegining(val) {
     var newNode = new Node(val)
+    
     if(this.isEmpty()) {
       this.tail = newNode
     } else {
       newNode.next = this.head
     }
+    
     this.head = newNode
   }
 
   insertAtTheEnd(val) {
     var newNode = new Node(val)
+    
     if(this.isEmpty()) {
       this.head = newNode
     } else {
       this.tail.next = newNode
     }
+    
     this.tail = newNode
   }
 
-  lengthIterative(ll) {
-    var current = this.head
+  lengthIterative() {
     var length = 0
+    var current = this.head
+    
     while(current) {
       length += 1
       current = current.next
     }
+    
     return length
   }
  
-  lengthRecursive(ll) {
-    if(this== null) {
-      return 0
-    } else {
-      return lengthRecursiveNode(this.head)
-    }
+  lengthRecursive() {
+    return lengthRecursiveNode(this.head)
   }
 
   getNode(n) {
-    if(n <= 0 || n>this.lengthIterative()) {
-      return null
+    if(n <= 0) return null
+    
+    var count = 1
+    var current = this.head
+    while(count != n && current.next != null) {
+      current = current.next
+      count += 1
     }
-    else if(n == 1 && this.head) {
-      return this.head.data
-    }else {
-      var current = this.head
-      var count = 1
-      while(count != n) {
-        current = current.next
-        count += 1
-      }
-      return current.data
-    }
+    
+    return count == n && current ? current.data : null
   }
 
 
   insertAfter(node, val) {
     if(this.isEmpty()) return
+    
     var newNode = new Node(val)
     if(node == this.tail) {
       this.tail = newNode
