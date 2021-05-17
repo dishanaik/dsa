@@ -99,7 +99,7 @@ describe('LinkedList', function() {
   describe('#lengthIterative', function() {
     describe('when empty', function() {
       it('should return 0', function() {
-        assert.strictEqual(LinkedList.lengthIterative(ll), 0)
+        assert.strictEqual(ll.lengthIterative(), 0)
       })
     })
     describe('when not empty', function() {
@@ -110,7 +110,7 @@ describe('LinkedList', function() {
         ll.insertAtTheBegining(40)
       })
       it('should return no. of nodes', function() {
-        assert.strictEqual( LinkedList.lengthIterative(ll), 4)
+        assert.strictEqual( ll.lengthIterative(), 4)
       })
     })
   })
@@ -118,7 +118,7 @@ describe('LinkedList', function() {
   describe('#lengthRecursive', function() {
     describe('when empty', function() {
       it('should return 0', function() {
-        assert.strictEqual(LinkedList.lengthRecursive(ll), 0)
+        assert.strictEqual(ll.lengthRecursive(), 0)
       })
     })
     describe('when not empty', function() {
@@ -129,8 +129,48 @@ describe('LinkedList', function() {
         ll.insertAtTheBegining(40)
       })
       it('should return no. of nodes', function() {
-        assert.strictEqual( LinkedList.lengthRecursive(ll), 4)
+        assert.strictEqual(ll.lengthRecursive(), 4)
       })
     })
+  })
+
+  describe('#getNode', function() {
+    describe('when n is less than or equal to 0', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(4)
+      })
+      it('should return null', function() {
+        assert.strictEqual(ll.getNode(0), null)
+      })
+    })
+    describe('when n is 1  when LL is not empty', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(6)
+      })
+      it('should return head node', function() {
+        assert.strictEqual(ll.getNode(1), 6)
+      })
+    })
+    describe('when n is 1  when LL is empty', function() {
+      it('should return null', function() {
+        assert.strictEqual(ll.getNode(1), null)
+      })
+    })
+    
+    describe('when more than 1 nodes are present', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(100)
+        ll.insertAtTheBegining(200)
+        ll.insertAtTheBegining(300)
+        ll.insertAtTheBegining(400)
+      })
+      it('should return the nth node\'s data', function() {
+        assert.strictEqual(ll.getNode(4), 100)
+      } )
+      it('should return null if n is greater than length of LL', function() {
+        assert.strictEqual(ll.getNode(5), null)
+      })
+    })
+    
   })
 })
