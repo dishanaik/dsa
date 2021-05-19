@@ -14,6 +14,7 @@ class SortedStack {
   }
 
   push(val) {
+    
   }
 
   pop() {
@@ -28,4 +29,4 @@ class SortedStack {
   }
 }
 
-module.exports = Stack
+module.exports = SortedStack
