@@ -52,16 +52,16 @@ class LinkedList {
   }
 
   getNode(n) {
-    if(n <= 0) return null
+    if(n < 0) return null
     
-    var count = 1
+    var count = 0
     var current = this.head
     while(count != n && current.next != null) {
       current = current.next
       count += 1
     }
     
-    return count == n && current ? current.data : null
+    return count == n && current ? current : null
   }
 
 
