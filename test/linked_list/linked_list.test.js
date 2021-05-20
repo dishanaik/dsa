@@ -48,7 +48,7 @@ describe('LinkedList', function() {
         assert.notStrictEqual(ll.head, null)
         assert.notStrictEqual(ll.tail, null)
         assert.strictEqual(ll.head.data, 40)
-        assert.strictEqual(ll.head.next.data, 30)
+        assert.strictEqual(ll.getNode(1).data, 30)
       })
     })
   })
@@ -69,7 +69,7 @@ describe('LinkedList', function() {
       it('should insert the value', function() {
         ll.insertAfter(ll.head, 20)
         assert.strictEqual(ll.head.data, 10)
-        assert.strictEqual(ll.head.next.data, 20)
+        assert.strictEqual(ll.getNode(1).data, 20)
         assert.strictEqual(ll.tail.data, 20)
         assert.strictEqual(ll.tail.next, undefined)
         assert.notStrictEqual(ll.head, ll.tail)
@@ -84,9 +84,9 @@ describe('LinkedList', function() {
 
       it('should insert the value', function() {
         ll.insertAfter(ll.head.next, 40)
-        assert.strictEqual(ll.head.next.next.data, 40)
-        assert.strictEqual(ll.head.next.data, 20)
-        assert.strictEqual(ll.head.next.next.next.data, 10)
+        assert.strictEqual(ll.getNode(2).data, 40)
+        assert.strictEqual(ll.getNode(1).data, 20)
+        assert.strictEqual(ll.getNode(3).data, 10)
       })
 
       it('should insert the value when inserting after tail', function() {
@@ -111,7 +111,7 @@ describe('LinkedList', function() {
       })
       it('should insert after that element', function() {
         ll.insertAtTheEnd(100)
-        assert.strictEqual(ll.head.next.data, 100)
+        assert.strictEqual(ll.getNode(1).data, 100)
         assert.strictEqual(ll.tail.data, 100)
       })
     })
@@ -122,7 +122,7 @@ describe('LinkedList', function() {
       })
       it('should insert after that element', function() {
         ll.insertAtTheEnd(888)
-        assert.strictEqual(ll.head.next.next.data, 888)
+        assert.strictEqual(ll.getNode(2).data, 888)
         assert.strictEqual(ll.tail.data, 888)
       })
     })
@@ -166,25 +166,25 @@ describe('LinkedList', function() {
   })
 
   describe('#getNode', function() {
-    describe('when n is less than or equal to 0', function() {
+    describe('when n is less than 0', function() {
       beforeEach(function() {
         ll.insertAtTheBegining(4)
       })
       it('should return null', function() {
-        assert.strictEqual(ll.getNode(0), null)
+        assert.strictEqual(ll.getNode(-1), null)
       })
     })
-    describe('when n is 1  when LL is not empty', function() {
+    describe('when n is 0  when LL is not empty', function() {
       beforeEach(function() {
         ll.insertAtTheBegining(6)
       })
       it('should return head node', function() {
-        assert.strictEqual(ll.getNode(1), 6)
+        assert.strictEqual(ll.getNode(0), ll.head)
       })
     })
-    describe('when n is 1  when LL is empty', function() {
+    describe('when n is 0  when LL is empty', function() {
       it('should return null', function() {
-        assert.strictEqual(ll.getNode(1), null)
+        assert.strictEqual(ll.getNode(0), null)
       })
     })
     
@@ -195,8 +195,8 @@ describe('LinkedList', function() {
         ll.insertAtTheBegining(300)
         ll.insertAtTheBegining(400)
       })
-      it('should return the nth node\'s data', function() {
-        assert.strictEqual(ll.getNode(4), 100)
+      it('should return the nth node', function() {
+        assert.strictEqual(ll.getNode(3), ll.head.next.next.next)
       } )
       it('should return null if n is greater than length of LL', function() {
         assert.strictEqual(ll.getNode(5), null)
