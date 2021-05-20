@@ -1,5 +1,4 @@
 var assert = require('assert')
-const { gunzip } = require('zlib')
 var LinkedList = require('../../src/linked_list/linked_list')
 var Node = require('../../src/linked_list/node')
 describe('LinkedList', function() {
