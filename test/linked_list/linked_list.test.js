@@ -1,4 +1,5 @@
 var assert = require('assert')
+const { gunzip } = require('zlib')
 var LinkedList = require('../../src/linked_list/linked_list')
 var Node = require('../../src/linked_list/node')
 describe('LinkedList', function() {
@@ -96,6 +97,37 @@ describe('LinkedList', function() {
       })
     })
   })
+
+  describe('#insertAtTheEnd', function() {
+    describe('when empty', function() {
+      it('should insert the value', function() {
+        ll.insertAtTheEnd(50)
+        assert.strictEqual(ll.head.data, 50)
+        assert.strictEqual(ll.tail, ll.head)
+      })
+    })
+    describe('when 1 element is present', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(90)
+      })
+      it('should insert after that element', function() {
+        ll.insertAtTheEnd(100)
+        assert.strictEqual(ll.head.next.data, 100)
+        assert.strictEqual(ll.tail.data, 100)
+      })
+    })
+    describe('when multiple elements are present', function() {
+      beforeEach(function() {
+        ll.insertAtTheBegining(8)
+        ll.insertAtTheBegining(88)
+      })
+      it('should insert after that element', function() {
+        ll.insertAtTheEnd(888)
+        assert.strictEqual(ll.head.next.next.data, 888)
+        assert.strictEqual(ll.tail.data, 888)
+      })
+    })
+  })
   describe('#lengthIterative', function() {
     describe('when empty', function() {
       it('should return 0', function() {
@@ -173,4 +205,5 @@ describe('LinkedList', function() {
     })
     
   })
+
 })
