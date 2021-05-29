@@ -1,9 +1,73 @@
 const {strictEqual, deepStrictEqual} = require('assert')
 
 const Node = require('../../src/tree/node')
+const { heightOfNode } = require('../../src/tree/tree')
 const Tree = require('../../src/tree/tree')
 
 describe('Tree', function() {
+  let tree = null
+  beforeEach(function() {
+    tree = new Tree()
+  })
+  describe('#height', function() {
+    it('should give the height of the tree', function() {
+      tree.root = new Node(10, new Node(3, null, new Node(7)), new Node(5, new Node(9), new Node(12)))
+      strictEqual(tree.height(), 3)
+    })
+  })
+
+  describe('#depthOfNode', function() {
+    it('should return depth of the node', function() {
+      tree.root = new Node(10, new Node(3, null, new Node(7)), new Node(5, new Node(9), new Node(12)))
+      let toFindNode = tree.root.right.right
+      strictEqual(tree.depthOfNode(toFindNode), 3)
+    })
+  })
+
+  describe('#isFullyBinaryTree', function() {
+    describe('when tree is empty', function() {
+      it('should be a fully binary tree', function() {
+        strictEqual(tree.isFullyBinaryTree(), true)
+      })
+    })
+
+    describe('when 1 node is present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10)
+      })
+      it('should be a fully binary tree', function() {
+        strictEqual(tree.isFullyBinaryTree(), true)
+      })
+    })
+
+    describe('when root node doesn\'t have left child', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, null, new Node(1))
+      })
+      it('should not be a fully binary tree', function() {
+        strictEqual(tree.isFullyBinaryTree(), false)
+      })
+    })
+
+    describe('when root node doesn\'t have right child', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, new Node(1), null)
+      })
+      it('should not be a fully binary tree', function() {
+        strictEqual(tree.isFullyBinaryTree(), false)
+      })
+    })
+
+    describe('when tree with both left and right nodes are present', function() {
+      this.beforeEach(function() {
+        tree.root = new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7)))
+      })
+      it('should be a fully binary tree', function() {
+        strictEqual(tree.isFullyBinaryTree(), true)
+      })
+    })
+  })
+
   describe('#postOrder', function() {
     it('should have a function called postOrder', function() {
       strictEqual(typeof Tree.postOrder, 'function')
@@ -141,6 +205,38 @@ describe('Tree', function() {
     describe('when nested tree is present', function() {
       it('should return in-order of the three', function() {
         deepStrictEqual(Tree.inOrder(new Tree(new Node(5, null,new Node(2, new Node(3), new Node(10)))).root), [5, 3, 2, 10])
+      })
+    })
+  })
+
+  describe('#heightOfNode', function() {
+    describe('when node is empty', function() {
+      it('should return zero', function() {
+        strictEqual(heightOfNode(null), 0)
+      })
+    })
+
+    describe('when one node is present', function() {
+      it('should return zero', function() {
+        strictEqual(Tree.heightOfNode(new Node(20)), 1)
+      })
+    })
+
+    describe('when node has only left node', function() {
+      it('should give the height as 1', function() {
+        strictEqual(Tree.heightOfNode(new Node(20, new Node(10))), 2)
+      })
+    })
+
+    describe('when node has only right node', function() {
+      it('should give the height as 1', function() {
+        strictEqual(Tree.heightOfNode(new Node(20, null, new Node(10))), 2)
+      })
+    })
+
+    describe('when tree has subtrees with unequal heights', function() {
+      it('should give the height of tallest subtree + 1', function() {
+        strictEqual(Tree.heightOfNode(new Node(5, null,new Node(2, new Node(3), new Node(10)))), 3)
       })
     })
   })
