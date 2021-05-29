@@ -10,7 +10,6 @@ describe('MinStack', function() {
     describe('when stack is empty', function() {
       it('should store the value', function() {
         stack.push(7)
-        console.log(stack)
         assert.strictEqual(stack.peek(), 7)
       })
     })
