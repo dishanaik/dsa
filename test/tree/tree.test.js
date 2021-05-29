@@ -58,11 +58,56 @@ describe('Tree', function() {
     })
 
     describe('when tree with both left and right nodes are present', function() {
-      this.beforeEach(function() {
+      beforeEach(function() {
         tree.root = new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7)))
       })
       it('should be a fully binary tree', function() {
         strictEqual(tree.isFullyBinaryTree(), true)
+      })
+    })
+  })
+
+  describe('#isPerfectBinaryTree', function() {
+    describe('when tree is empty', function() {
+      it('should be perfect binary tree', function() {
+        strictEqual(tree.isPerfectBinaryTree(), true)
+      })
+    })
+
+    describe('when 1 node is present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10)
+      })
+      it('should be perfect binary tree', function() {
+        strictEqual(tree.isPerfectBinaryTree(), true)
+      })
+    })
+
+    describe('when right node is not present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, new Node(1))
+      })
+      it('should not be perfect binary tree', function() {
+        strictEqual(tree.isPerfectBinaryTree(), false)
+      })
+    })
+
+    describe('when left node is not present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, null, new Node(1))
+      })
+      it('should not be perfect binary tree', function() {
+        strictEqual(tree.isPerfectBinaryTree(), false)
+      })
+    })
+
+    
+    describe('when both subtrees are present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, new Node(1), new Node(2))
+      })
+      it('should be perfect binary tree', function() {
+        strictEqual(tree.isPerfectBinaryTree(), true)
       })
     })
   })
