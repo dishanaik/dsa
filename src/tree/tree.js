@@ -1,6 +1,53 @@
+function depthRecursively(node, currentNode, currentDepth) {
+  if(currentNode == null) return null
+  if(node == currentNode) return currentDepth
+  return depthRecursively(node, currentNode.left, currentDepth + 1) || depthRecursively(node, currentNode.right, currentDepth + 1)
+}
+
+function sizeRecursively(currentNode) {
+  if(currentNode == null) return 0
+  return sizeRecursively(currentNode.left) + sizeRecursively(currentNode.right) + 1
+}
+
+function isFullyBinaryTreeRecursively(currentNode) {
+    if(currentNode == null) return true
+    if(currentNode.left == null && currentNode.right == null) return true
+    if(!(currentNode.left != null && currentNode.right != null)) return false
+    return (isFullyBinaryTreeRecursively(currentNode.left) && isFullyBinaryTreeRecursively(currentNode.right))
+}
+
+
 class Tree {
   constructor(root) {
     this.root = root
+  }
+
+  height() {
+    return Tree.heightOfNode(this.root)
+  }
+
+  depthOfNode(node) {
+    if(node == null) return null
+    return depthRecursively(node, this.root, 1)
+  }
+
+  size() {
+    return sizeRecursively(this.root)
+  }
+
+  isFullyBinaryTree() {
+    return isFullyBinaryTreeRecursively(this.root)
+  }
+
+  isPerfectBinaryTree() {
+    if(this.root == null) return true
+    let nodes = 2 * (Math.pow(2, this.height() - 1) - 1) + 1
+    return this.size() == nodes
+  }
+
+  static heightOfNode(node) {
+    if(node == null) return 0
+    return Math.max(Tree.heightOfNode(node.left), Tree.heightOfNode(node.right)) + 1
   }
   
   static preOrder(node, array = []) {
