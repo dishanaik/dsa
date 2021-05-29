@@ -4,14 +4,11 @@ function depthRecursively(node, currentNode, currentDepth) {
   return depthRecursively(node, currentNode.left, currentDepth + 1) || depthRecursively(node, currentNode.right, currentDepth + 1)
 }
 
-function hasTwoOrZeroChildrenRecursively(currentNode) {
+function isFullyBinaryTreeRecursively(currentNode) {
     if(currentNode == null) return true
     if(currentNode.left == null && currentNode.right == null) return true
-    if(currentNode.left != null && currentNode.right != null) {
-      return (hasTwoOrZeroChildrenRecursively(currentNode.left) && hasTwoOrZeroChildrenRecursively(currentNode.right))
-    } else {
-      return false
-    }
+    if(!(currentNode.left != null && currentNode.right != null)) return false
+    return (isFullyBinaryTreeRecursively(currentNode.left) && isFullyBinaryTreeRecursively(currentNode.right))
 }
 
 class Tree {
@@ -29,7 +26,7 @@ class Tree {
   }
 
   isFullyBinaryTree() {
-    return hasTwoOrZeroChildrenRecursively(this.root)
+    return isFullyBinaryTreeRecursively(this.root)
   }
 
   static heightOfNode(node) {

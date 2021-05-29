@@ -1,7 +1,6 @@
 const {strictEqual, deepStrictEqual} = require('assert')
 
 const Node = require('../../src/tree/node')
-const { heightOfNode } = require('../../src/tree/tree')
 const Tree = require('../../src/tree/tree')
 
 describe('Tree', function() {
@@ -212,7 +211,7 @@ describe('Tree', function() {
   describe('#heightOfNode', function() {
     describe('when node is empty', function() {
       it('should return zero', function() {
-        strictEqual(heightOfNode(null), 0)
+        strictEqual(Tree.heightOfNode(null), 0)
       })
     })
 
