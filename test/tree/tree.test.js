@@ -236,6 +236,15 @@ describe('Tree', function() {
       })
     })
 
+    describe('when it is right skewed tree with height 3', function() {
+      beforeEach(function() {
+        tree.root = new Node(1, null, new Node(2, null, new Node(3)))
+      })
+      it('should not be balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), false)
+      })
+    })
+
   })
   describe('#postOrder', function() {
     it('should have a function called postOrder', function() {
