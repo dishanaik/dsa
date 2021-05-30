@@ -54,6 +54,10 @@ class Tree {
     return sizeRecursively(this.root)
   }
 
+  isEmpty() {
+    return this.root == null
+  }
+
   isFullyBinaryTree() {
     return isFullyBinaryTreeRecursively(this.root)
   }
