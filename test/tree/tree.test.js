@@ -213,7 +213,7 @@ describe('Tree', function() {
 
     describe('when both subtrees are present with even height', function() {
       beforeEach(function() {
-        tree.root = new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7)))
+        tree.root = new Node(1, new Node(2, new Node(3)), new Node(4))
       })
       it('should be balanced binary tree', function() {
         strictEqual(tree.isBalancedBinaryTree(), true)
@@ -222,7 +222,7 @@ describe('Tree', function() {
 
     describe('when both subtrees are present with uneven height', function() {
       beforeEach(function() {
-        tree.root = new Node(1, new Node(2, new Node(4), new Node(5, new Node(8))), new Node(3))
+        tree.root = new Node(1, new Node(2, new Node(3, new Node(4))), new Node(5))
       })
       it('should be balanced binary tree', function() {
         strictEqual(tree.isBalancedBinaryTree(), false)
