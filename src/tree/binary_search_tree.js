@@ -3,16 +3,16 @@ const Node = require('./node')
 
 function insertRecursively(node, data) {
   if(data <= node.data) {
-    if(!node.left) {
-      node.left = new Node(data)
-    } else {
+    if(node.left) {
       insertRecursively(node.left, data)
+    } else {
+      node.left = new Node(data)
     }
   } else {
-    if(!node.right) {
-      node.right = new Node(data)
-    } else {
+    if(node.right) {
       insertRecursively(node.right, data)
+    } else {
+      node.right = new Node(data)
     }
   }
 }
