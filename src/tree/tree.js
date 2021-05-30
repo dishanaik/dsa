@@ -32,7 +32,7 @@ function isBalancedBinaryTreeRecursively(currentNode) {
   if(currentNode.left == null && currentNode.right == null) return true
   let heightDifference = Tree.heightOfNode(currentNode.left) - Tree.heightOfNode(currentNode.right)
   if(![-1, 0, 1].includes(heightDifference)) return false
-  return isBalancedBinaryTreeRecursively(currentNode.left) || 
+  return isBalancedBinaryTreeRecursively(currentNode.left) && 
     isBalancedBinaryTreeRecursively(currentNode.right)
 }
 
