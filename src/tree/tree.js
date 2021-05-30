@@ -16,6 +16,13 @@ function isFullyBinaryTreeRecursively(currentNode) {
     return (isFullyBinaryTreeRecursively(currentNode.left) && isFullyBinaryTreeRecursively(currentNode.right))
 }
 
+function isCompleteBinaryTreeRecursively(currentNode) {
+  if(currentNode == null) return true
+  if(currentNode.left == null && currentNode.right == null) return true
+  let heightDifference = Tree.heightOfNode(currentNode.left)- Tree.heightOfNode(currentNode.right)
+  if(![0,1].includes(heightDifference)) return false
+  return isCompleteBinaryTreeRecursively(currentNode.left) && isCompleteBinaryTreeRecursively(currentNode.right)
+}
 
 class Tree {
   constructor(root) {
@@ -43,6 +50,10 @@ class Tree {
     if(this.root == null) return true
     let nodes = 2 * (Math.pow(2, this.height() - 1) - 1) + 1
     return this.size() == nodes
+  }
+
+  isCompleteBinaryTree() {
+    return isCompleteBinaryTreeRecursively(this.root)
   }
 
   static heightOfNode(node) {
