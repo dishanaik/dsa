@@ -22,7 +22,7 @@ function isCompleteBinaryTreeRecursively(currentNode) {
   if(currentNode == null) return true
   if(currentNode.left == null && currentNode.right == null) return true
   let heightDifference = Tree.heightOfNode(currentNode.left) - Tree.heightOfNode(currentNode.right)
-  if(![0,1].includes(heightDifference)) return false
+  if(![0, 1].includes(heightDifference)) return false
   return isCompleteBinaryTreeRecursively(currentNode.left) && 
     isCompleteBinaryTreeRecursively(currentNode.right)
 }
