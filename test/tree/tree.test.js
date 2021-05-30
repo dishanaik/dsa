@@ -175,6 +175,68 @@ describe('Tree', function() {
     })
   })
   
+  describe('#isBalancedBinaryTree', function() {
+    describe('when empty', function() {
+      it('should be a balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), true)
+      })
+    })
+
+    describe('when 1 node is present', function() {
+      beforeEach(function() {
+        tree.root = new Node(2)
+      })
+      it('should be a balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), true)
+      })
+    })
+
+    describe('when right node is not present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, new Node(1))
+      })
+      it('should be balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), true)
+      })
+    })
+
+    describe('when left node is not present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, null, new Node(1))
+      })
+      it('should be balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), true)
+      })
+    })
+
+    describe('when both subtrees are present', function() {
+      beforeEach(function() {
+        tree.root = new Node(10, new Node(7), new Node(1))
+      })
+      it('should be balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), true)
+      })
+    })
+
+    describe('when both subtrees are present with even height', function() {
+      beforeEach(function() {
+        tree.root = new Node(1, new Node(2, new Node(3)), new Node(4))
+      })
+      it('should be balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), true)
+      })
+    })
+
+    describe('when both subtrees are present with uneven height', function() {
+      beforeEach(function() {
+        tree.root = new Node(1, new Node(2, new Node(3, new Node(4))), new Node(5))
+      })
+      it('should be balanced binary tree', function() {
+        strictEqual(tree.isBalancedBinaryTree(), false)
+      })
+    })
+
+  })
   describe('#postOrder', function() {
     it('should have a function called postOrder', function() {
       strictEqual(typeof Tree.postOrder, 'function')

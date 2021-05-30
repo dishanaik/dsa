@@ -27,6 +27,15 @@ function isCompleteBinaryTreeRecursively(currentNode) {
     isCompleteBinaryTreeRecursively(currentNode.right)
 }
 
+function isBalancedBinaryTreeRecursively(currentNode) {
+  if(currentNode == null) return true
+  if(currentNode.left == null && currentNode.right == null) return true
+  let heightDifference = Tree.heightOfNode(currentNode.left) - Tree.heightOfNode(currentNode.right)
+  if(![-1, 0, 1].includes(heightDifference)) return false
+  return isBalancedBinaryTreeRecursively(currentNode.left) || 
+    isBalancedBinaryTreeRecursively(currentNode.right)
+}
+
 class Tree {
   constructor(root) {
     this.root = root
@@ -57,6 +66,10 @@ class Tree {
 
   isCompleteBinaryTree() {
     return isCompleteBinaryTreeRecursively(this.root)
+  }
+
+  isBalancedBinaryTree() {
+    return isBalancedBinaryTreeRecursively(this.root)
   }
 
   static heightOfNode(node) {
