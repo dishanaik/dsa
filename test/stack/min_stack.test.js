@@ -1,4 +1,5 @@
 var assert = require('assert')
+const { beforeEach } = require('mocha')
 var MinStack = require('../../src/stack/min_stack')
 
 describe('MinStack', function() {
@@ -7,6 +8,18 @@ describe('MinStack', function() {
     stack = new MinStack()
   })
   describe('#push', function() {
+
+    describe('when stack is full', function() {
+      beforeEach(function() {
+        stack.a = [1, 2, 3, 4, 5]
+        stack.i = 5
+        stack.size = 5
+      })
+      it('should not store the value', function() {
+        stack.push(7)
+        assert.strictEqual(stack.peek(), 5)
+      })
+    })
     describe('when stack is empty', function() {
       it('should store the value', function() {
         stack.push(7)

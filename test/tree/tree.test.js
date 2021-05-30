@@ -16,10 +16,17 @@ describe('Tree', function() {
   })
 
   describe('#depthOfNode', function() {
-    it('should return depth of the node', function() {
-      tree.root = new Node(10, new Node(3, null, new Node(7)), new Node(5, new Node(9), new Node(12)))
-      let toFindNode = tree.root.right.right
-      strictEqual(tree.depthOfNode(toFindNode), 3)
+    describe('when empty', function() {
+      it('should give depth as zero', function() {
+        strictEqual(tree.depthOfNode(this.root), null)
+      })
+    })
+    describe('when empty', function() {
+      it('should return depth of the node', function() {
+        tree.root = new Node(10, new Node(3, null, new Node(7)), new Node(5, new Node(9), new Node(12)))
+        let toFindNode = tree.root.right.right
+        strictEqual(tree.depthOfNode(toFindNode), 3)
+      })
     })
   })
 
