@@ -10,4 +10,5 @@
 - Never get stuck without any thought in mind. If one way is closed, come back and find another way
 - Think about edge cases for every step
 - Keep in mind all the programming constructs and also all the functions available
+- Dont think about which you already know.
 - DRY
